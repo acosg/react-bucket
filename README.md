@@ -1,4 +1,4 @@
-# React Bucket!
+# React BucketJS!
 
 bucket.js is an ultra lightweight state-management for your react projects.
 
@@ -9,7 +9,7 @@ bucket.js is an ultra lightweight state-management for your react projects.
 #### Install
 
 ```
-npm install react-bucket
+npm install react-bucketjs
 ```
 
 ---
@@ -19,7 +19,7 @@ npm install react-bucket
 Simple counter and re-rendering on change.
 
 ```js
-import { bucket, useBucket } from "react-bucket";
+import { bucket, useBucket } from "react-bucketjs";
 
 //suggestion: export your bucket in a globals file to access anywhere
 let btCount = bucket(0);
@@ -41,7 +41,7 @@ function Counter() {
 Multiple counters in a single bucket, showing how to increment in different ways.
 
 ```js
-import { bucket, useBucketSelector } from "react-bucket";
+import { bucket, useBucketSelector } from "react-bucketjs";
 
 let btCounters = bucket({ Larry: 0, Curly: 0, Moe: 0 });
 
@@ -91,10 +91,10 @@ function Counter() {
 You can control if `useBucket` and `useBucketSelector` should trigger a re-render using a comparator. This is helpful if you have an object in a bucket and only want specific keys in that bucket to be triggered instead of any key/value.
 
 ```js
-import { useBucket, useBucketSelector } from "react-bucket";
+import { useBucket, useBucketSelector } from "react-bucketjs";
 
 //a JSON stringify comparator is available to use as well for complex objects/arrays
-import { compareStringified } from "react-bucket";
+import { compareStringified } from "react-bucketjs";
 
 //Example 1
 //render only when specific keys do not match
