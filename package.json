@@ -3,8 +3,13 @@
     "version": "1.0.0",
     "description": "React state-management using elegant buckets with hooks to support re-render on changes.",
     "main": "bucket.js",
+    "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/acosgames/react-bucket"
     },
     "peerDependencies": {
         "react": "^18"

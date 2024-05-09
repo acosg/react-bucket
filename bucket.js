@@ -1,7 +1,7 @@
 import { useSyncExternalStore, useRef, useCallback } from "react";
 
-export const compareStringified = (a, b) =>
-    JSON.stringify(a) === JSON.stringify(b);
+export const compareStringified = (prev, next) =>
+    JSON.stringify(prev) === JSON.stringify(next);
 
 export const bucket = (initialState) => {
     let subscribers = new Set();
