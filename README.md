@@ -1,5 +1,7 @@
 # React BucketJS!
 
+[![npm version](https://badge.fury.io/js/react-bucketjs.svg)](https://badge.fury.io/js/react-bucketjs)
+
 bucket.js is an ultra lightweight state-management for your react projects.
 
 -   Easily find your bucket references across your codebase
