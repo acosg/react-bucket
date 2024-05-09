@@ -5,6 +5,7 @@ bucket.js is an ultra lightweight state-management for your react projects.
 -   Easily find your bucket references across your codebase
 -   Supports primitive, arrays and object types
 -   Hooks to track changes by bucket or bucket selector
+-   No dependencies, only react 18 as peerDependency
 
 #### Install
 
@@ -93,20 +94,54 @@ You can control if `useBucket` and `useBucketSelector` should trigger a re-rende
 ```js
 import { useBucket, useBucketSelector } from "react-bucketjs";
 
-//a JSON stringify comparator is available to use as well for complex objects/arrays
+// A JSON stringify comparator is available to use as well for complex objects/arrays
 import { compareStringified } from "react-bucketjs";
 
-//Example 1
-//render only when specific keys do not match
+// Example 1
+// Render only when specific keys do not match
 const comparatorA = (prev, next) => prev.key !== next.key;
 let value = useBucket(myBucket, comparatorA);
 
-//Example 2
-//render selector values always, even if they are equal
+// Example 2
+// Render selector values always, even if they are equal
 const comparatorB = (prev, next) => true;
 let selectedValue = useBucketSelector(
     myBucket,
     (bucket) => bucket.key,
     comparatorB
 );
+```
+
+### Subscribe to bucket
+
+Track bucket changes outside of a react function component using any function.
+
+```js
+import { bucket } from "react-bucketjs";
+
+let btCounter = bucket(0);
+
+/**
+ * Note: internally we always use an object to store the value in a "state".
+ * This is required for useSyncExternalStore,
+ * so for regular functions you'll need to access the bucket.state.
+ */
+const onIncrement = (bucket) => console.log("Count: ", bucket.state);
+
+// Subscribe to the bucket
+btCounter.subscribe(onIncrement);
+
+// Trigger an increment
+function increment() {
+    let count = btCounter.get();
+    btCounter.set(count + 1);
+}
+
+//...
+
+increment();
+//output: Count: 1
+
+increment();
+//output: Count: 2
 ```
